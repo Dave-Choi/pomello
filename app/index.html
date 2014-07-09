@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Pomello</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {{BASE_TAG}}
+
+    <link rel="stylesheet" href="assets/vendor.css">
+    <link rel="stylesheet" href="assets/pomello.css">
+  </head>
+  <body>
+    <script>
+      window.PomelloENV = {{ENV}};
+      window.EmberENV = window.PomelloENV.EmberENV;
+    </script>
+    <script src="assets/vendor.js"></script>
+    <script src="assets/pomello.js"></script>
+    <script>
+      window.Pomello = require('pomello/app')['default'].create(PomelloENV.APP);
+    </script>
+  </body>
+</html>
