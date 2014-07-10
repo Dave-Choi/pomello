@@ -1,0 +1,6 @@
+{{#if isAuthorized}}
+	<p class="navbar-text">{{fullName}}</p>
+	<button class="btn btn-default navbar-btn" {{action "deauthorize"}}>Disconnect from Trello</button>
+{{else}}
+	<button class="btn btn-default navbar-btn" {{action "authorize"}}>Connect Trello</button>
+{{/if}}
