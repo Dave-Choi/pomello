@@ -1,0 +1,16 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6 list-group">
+			<p class="list-group-item">Cards</p>
+			{{#each}}
+				{{#link-to "card" id class="list-group-item"}}
+					<h4>{{name}}</h4>
+				{{/link-to}}
+			{{/each}}
+		</div>
+
+		<div class="col-md-6">
+			{{outlet}}
+		</div>
+	</div>
+</div>
