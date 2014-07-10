@@ -1,0 +1,9 @@
+<h2>
+	{{name}}<br />
+	<small>{{desc}}</small>	
+</h2>
+{{#each comments}}
+	<div>
+		{{memberCreator.initials}} - {{date}} - {{data.text}}
+	</div>
+{{/each}}
