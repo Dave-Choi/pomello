@@ -26,4 +26,14 @@ app.import({
 	production: 'vendor/bootstrap/dist/css/bootstrap.min.css'
 });
 
+app.import({
+  development: "vendor/d3/d3.js",
+  production: "vendor/d3/d3.min.js"
+});
+
+app.import({
+  development: "vendor/moment/moment.js",
+  production: "vendor/moment/min/moment.min.js"
+});
+
 module.exports = app.toTree();
