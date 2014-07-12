@@ -1,3 +1,18 @@
 body{
 	padding-top: 70px; 
 }
+
+.progress-donut{
+	height: 200px;
+	margin: 1em;
+}
+
+.progress-donut .background{
+	fill: #ABD15D;
+}
+
+.progress-donut .foreground{
+	fill: #d82A29;
+	stroke: white;
+	stroke-width: 1px;
+}
