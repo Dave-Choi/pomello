@@ -1,18 +1,20 @@
-{{progress-donut
-	text=remainingString
-	completion=completion
-}}
-
-<div class="input-group">
-	{{input
-		class="form-control"
-		placeholder=placeholder
+<div>
+	{{progress-donut
+		text=remainingString
+		completion=completion
 	}}
-	<span class="input-group-btn">
-		{{#if isTiming}}
-			<button class="btn btn-danger" {{action "stop"}}>Stop</button>
-		{{else}}
-			<button class="btn btn-success" {{action "start"}}>Work</button>
-		{{/if}}
-	</span>
+
+	<div class="input-group">
+		{{input
+			class="form-control"
+			placeholder=placeholder
+		}}
+		<span class="input-group-btn">
+			{{#if isTiming}}
+				<button class="btn btn-danger" {{action "stop"}}>Stop</button>
+			{{else}}
+				<button class="btn btn-success" {{action "start"}}>Work</button>
+			{{/if}}
+		</span>
+	</div>
 </div>
