@@ -2,11 +2,19 @@
 	{{name}}<br />
 	<small>{{desc}}</small>	
 </h2>
-{{#each comments}}
-	<div>
-		{{memberCreator.initials}} - {{date}} - {{data.text}}
-	</div>
-{{/each}}
 
 {{render "timer"}}
 
+<div>
+	{{#each comments}}
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<span class="label label-default">{{memberCreator.initials}}</span> <span class="pull-right">{{human-date date}}</span>
+			</div>
+		
+			<div class="panel-body">
+				{{data.text}}
+			</div>
+		</div>
+	{{/each}}
+</div>
