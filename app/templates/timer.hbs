@@ -4,17 +4,30 @@
 		completion=completion
 	}}
 
-	<div class="input-group">
-		{{input
+	<form {{action "start" on="submit"}}>
+		<div class="input-group">
+			{{input
+				class="form-control"
+				value=taskDescription
+				placeholder=placeholder
+				disabled=isTiming
+			}}
+			<span class="input-group-btn">
+				{{#if isTiming}}
+					<button class="btn btn-danger" {{action "stop"}}>Stop</button>
+				{{else}}
+					<button class="btn btn-success" {{bind-attr disabled=isTaskDescriptionEmpty}} {{action "start"}}>Work</button>
+				{{/if}}
+			</span>
+		</div>
+	</form>
+
+	{{#if isTiming}}
+		{{textarea
 			class="form-control"
-			placeholder=placeholder
+			rows=4
+			placeholder="Notes"
+			value=notes
 		}}
-		<span class="input-group-btn">
-			{{#if isTiming}}
-				<button class="btn btn-danger" {{action "stop"}}>Stop</button>
-			{{else}}
-				<button class="btn btn-success" {{action "start"}}>Work</button>
-			{{/if}}
-		</span>
-	</div>
+	{{/if}}
 </div>

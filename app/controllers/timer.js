@@ -14,6 +14,10 @@ export default Ember.Controller.extend({
 	isTiming: false,
 	timeoutID: null,
 
+	taskDescription: "",
+	notes: "",
+	isTaskDescriptionEmpty: Ember.computed.empty("taskDescription"),
+
 	placeholder: function(){
 		return "My focus for the next " + moment.duration(this.get("duration")).humanize() + " is ...";
 	}.property("duration"),
@@ -43,7 +47,6 @@ export default Ember.Controller.extend({
 
 		if(time >= duration){
 			// Do whatever happens when the timer's done.
-
 			this.send("stop");
 		}
 		else{
@@ -63,8 +66,9 @@ export default Ember.Controller.extend({
 		},
 
 		stop: function(){
-			this.set("isTiming", false);
 			clearTimeout(this.get("timeoutID"));
+			this.send("createComment", "**:tomato: " + this.get("taskDescription") + "**\n\n" + this.get("notes"));
+			this.set("isTiming", false);
 		}
 	}
 });
