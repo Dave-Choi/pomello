@@ -16,6 +16,10 @@ export default Ember.ObjectController.extend({
 		var controller = this;
 		Trello.authorize({
 			interactive: false,
+			scope: {
+				read: true,
+				write: true
+			},
 			success: function(){
 				controller.authorizationSuccess();
 			}
@@ -28,6 +32,10 @@ export default Ember.ObjectController.extend({
 			Trello.authorize({
 				type: "popup",
 				name: "Pomello",
+				scope: {
+					read: true,
+					write: true
+				},
 				success: function(){
 					controller.authorizationSuccess();
 					controller.transitionTo("trello");
