@@ -16,3 +16,9 @@ body{
 	stroke: white;
 	stroke-width: 1px;
 }
+
+
+.emoji{
+	height: 1.4em;
+	vertical-align: text-bottom;
+}

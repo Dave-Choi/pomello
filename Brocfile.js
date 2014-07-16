@@ -1,5 +1,7 @@
 /* global require, module */
 
+var mergeTrees = require('broccoli-merge-trees');
+var pickFiles = require('broccoli-static-compiler');
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 var app = new EmberApp();
@@ -36,4 +38,19 @@ app.import({
   production: "vendor/moment/min/moment.min.js"
 });
 
-module.exports = app.toTree();
+app.import("vendor/markdown-js/lib/markdown.js");
+
+app.import({
+  development: "vendor/emojify/emojify.js",
+  production: "vendor/emojify/emojify.min.js"
+});
+
+var emojiImages = pickFiles("vendor/emojify/images/emoji", {
+	srcDir: "/",
+	files: ["**/*.png"],
+	destDir: "/assets/images/emoji"
+});
+
+// module.exports = app.toTree();
+
+module.exports = mergeTrees([app.toTree(), emojiImages]);
