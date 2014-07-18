@@ -9,14 +9,6 @@
 
 <div>
 	{{#each comments}}
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<span class="label label-default">{{memberCreator.initials}}</span> <span class="pull-right">{{human-date date}}</span>
-			</div>
-		
-			<div class="panel-body">
-				{{trello-formatter data.text}}
-			</div>
-		</div>
+		{{render "comment" this}}
 	{{/each}}
 </div>

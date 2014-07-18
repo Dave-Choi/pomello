@@ -1,0 +1,28 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<span class="label label-default">{{memberCreator.initials}}</span> <span class="pull-right">{{human-date date}}</span>
+	</div>
+
+	<div class="panel-body">
+		{{#if isEditing}}
+
+			<form>
+				<div class="form-group">
+					{{textarea value=data.text class="form-control" rows="4"}}
+				</div>
+
+				<div class="form-group pull-right">
+					<button {{action "cancelEdit"}} class="btn btn-warning">Cancel</button>
+					<button {{action "saveEdit"}} class="btn btn-primary">Save</button>
+				</div>
+			</form>
+
+		{{else}}
+
+			{{trello-formatter data.text}}
+			<div class="form-group pull-right">
+				<button {{action "startEdit"}} class="btn">Edit</button>
+			</div>
+		{{/if}}
+	</div>
+</div>
