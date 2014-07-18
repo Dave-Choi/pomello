@@ -22,6 +22,7 @@
 			{{trello-formatter data.text}}
 			<div class="form-group pull-right">
 				<button {{action "startEdit"}} class="btn">Edit</button>
+				<button {{action "deleteComment" this}} class="btn">Delete</button>
 			</div>
 		{{/if}}
 	</div>

@@ -24,6 +24,22 @@ export default Ember.ObjectController.extend({
 					console.log("error saving comment", response);
 				}
 			);
+		},
+
+		deleteComment: function(comment){
+			var controller = this;
+			var cardId = this.get("id");
+			var commentId = comment.id;
+
+			Trello.delete("/cards/" + cardId + "/actions/" + commentId + "/comments",
+				function(response){
+					console.log("comment delete success", response);
+					controller.get("comments").removeObject(comment);
+				},
+				function(response){
+					console.log("comment delete failure", response);
+				}
+			);
 		}
 	}
 });
