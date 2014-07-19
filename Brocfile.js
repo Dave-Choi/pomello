@@ -40,6 +40,19 @@ app.import({
 
 app.import("vendor/markdown-js/lib/markdown.js");
 
+app.import("vendor/font-awesome/css/font-awesome.min.css");
+var fontawesomeFonts = pickFiles('vendor/font-awesome/fonts', {
+    srcDir: '/',
+    files: [
+        'fontawesome-webfont.ttf',
+        'fontawesome-webfont.woff',
+        'fontawesome-webfont.eot',
+        'FontAwesome.otf',
+        'fontawesome-webfont.svg'
+    ],
+    destDir: '/fonts'
+});
+
 app.import({
   development: "vendor/emojify/emojify.js",
   production: "vendor/emojify/emojify.min.js"
@@ -53,4 +66,8 @@ var emojiImages = pickFiles("vendor/emojify/images/emoji", {
 
 // module.exports = app.toTree();
 
-module.exports = mergeTrees([app.toTree(), emojiImages]);
+module.exports = mergeTrees([
+	app.toTree(), 
+	emojiImages,
+	fontawesomeFonts
+]);

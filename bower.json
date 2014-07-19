@@ -16,6 +16,7 @@
     "d3": "~3.4.9",
     "moment": "~2.7.0",
     "markdown-js": "Dave-Choi/markdown-js",
-    "emojify": "~0.9.2"
+    "emojify": "~0.9.2",
+    "font-awesome": "~4.1.0"
   }
 }
