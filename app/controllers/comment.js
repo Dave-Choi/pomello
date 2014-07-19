@@ -2,10 +2,11 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
-	isEditing: true,
+	isEditing: false,
 	oldText: "",
 
 	initOldText: function(){
+		// Just in case things start out in edit mode for some reason.
 		this.set("oldText", this.get("data.text"));
 	}.on("init"),
 
