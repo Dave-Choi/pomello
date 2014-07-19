@@ -5,25 +5,23 @@
 
 	<div class="panel-body">
 		{{#if isEditing}}
-
 			<form>
 				<div class="form-group">
 					{{textarea value=data.text class="form-control" rows="4"}}
 				</div>
-
-				<div class="form-group pull-right">
-					<button {{action "cancelEdit"}} class="btn btn-warning">Cancel</button>
-					<button {{action "saveEdit"}} class="btn btn-primary">Save</button>
-				</div>
 			</form>
-
 		{{else}}
-
 			{{trello-formatter data.text}}
-			<div class="form-group pull-right">
-				<button {{action "startEdit"}} class="btn">Edit</button>
-				<button {{action "deleteComment" this}} class="btn">Delete</button>
-			</div>
+		{{/if}}
+	</div>
+
+	<div class="panel-footer text-right">
+		{{#if isEditing}}
+			<a {{action "cancelEdit"}} class="btn btn-xs"><i class="fa fa-undo"> Cancel</i></a>
+			<a {{action "saveEdit"}} class="btn btn-xs"><i class="fa fa-save"> Save</i></a>
+		{{else}}
+			<a {{action "startEdit"}} class="btn btn-xs"><i class="fa fa-pencil"> Edit</i></a>
+			<a {{action "deleteComment" this}} class="btn btn-xs"><i class="fa fa-trash-o"> Delete</i></a>
 		{{/if}}
 	</div>
 </div>
