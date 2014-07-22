@@ -38,7 +38,7 @@ export default Ember.ObjectController.extend({
 				},
 				success: function(){
 					controller.authorizationSuccess();
-					controller.transitionTo("trello");
+					controller.transitionToRoute("trello");
 				}
 			});
 		},
