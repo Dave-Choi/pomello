@@ -3,7 +3,6 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
 	isAuthorized: false,
-	fullName: "",
 	token: "",
 	previousTransition: null,
 
