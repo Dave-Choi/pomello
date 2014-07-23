@@ -2,6 +2,7 @@ body{
 	padding-top: 70px; 
 }
 
+
 .progress-donut{
 	height: 200px;
 	margin: 1em;
@@ -21,4 +22,46 @@ body{
 .emoji{
 	height: 1.4em;
 	vertical-align: text-bottom;
+}
+
+
+.pulse{
+	animation-name: pulse;
+	-webkit-animation-name: pulse;	
+
+	animation-duration: 2s;
+	-webkit-animation-duration: 2s;
+
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(0.99);
+		/*opacity: 0.7;		*/
+	}
+	50% {
+		transform: scale(1);
+		/*opacity: 1;	*/
+	}	
+	100% {
+		transform: scale(0.99);
+		/*opacity: 0.7;	*/
+	}			
+}
+
+@-webkit-keyframes pulse {
+	0% {
+		-webkit-transform: scale(0.99);
+		/*opacity: 0.7;		*/
+	}
+	50% {
+		-webkit-transform: scale(1);
+		/*opacity: 1;	*/
+	}	
+	100% {
+		-webkit-transform: scale(0.99);
+		/*opacity: 0.7;	*/
+	}			
 }

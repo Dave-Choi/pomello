@@ -1,7 +1,8 @@
 <div>
-	{{progress-donut
+	{{timer-donut
 		text=remainingString
 		completion=completion
+		isTiming=isTiming
 	}}
 
 	<form {{action "start" on="submit"}}>
