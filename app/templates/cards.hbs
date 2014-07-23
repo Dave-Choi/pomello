@@ -1,11 +1,32 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-6 list-group">
-			<p class="list-group-item">Cards</p>
-			{{#each}}
+			<div class="list-group-item">
+				<h3>Cards</h3>
+			</div>
+			<div class="input-group list-group-item">
+				<div class="input-group">
+					{{input 
+						class="form-control" 
+						value=filterString
+						placeholder="Filter expression"
+					}}
+					<span class="input-group-addon"><i class="fa fa-search"></i></span>
+				</div>
+			</div>
+			{{#each filtered}}
 				{{#link-to "card" id class="list-group-item"}}
-					<h4>{{name}}</h4>
+					{{#if badges.comments}}
+						<span class="badge">{{badges.comments}}</span>
+					{{/if}}
+					<strong>{{name}}</strong><br />
+					{{desc}}
 				{{/link-to}}
+
+			{{else}}
+				<div class="list-group-item">
+					<p>You have no unarchived cards assigned to you.</p>
+				</div>
 			{{/each}}
 		</div>
 
