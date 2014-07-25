@@ -9,7 +9,6 @@ export default AuthorizedRoute.extend({
 
 	setupController: function(controller, model){
 		var userController = this.controllerFor("user");
-		console.log(model);
 		userController.set("model", model);
 	}
 });
