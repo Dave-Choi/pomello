@@ -1,6 +1,13 @@
-{{#if isAuthorized}}
-	<p class="navbar-text">{{fullName}}</p>
-	<button class="btn btn-default navbar-btn" {{action "deauthorize"}}>Disconnect <i class="fa fa-trello"></i></button>
-{{else}}
-	<button class="btn btn-default navbar-btn" {{action "authorize"}}>Connect <i class="fa fa-trello"></i></button>
-{{/if}}
+<div class="navbar-right">
+	{{#if isAuthorized}}
+		<ul class="nav navbar-nav">
+			{{#link-to "cards" tagName="li"}}
+				{{link-to "Cards" "cards"}}
+			{{/link-to}}
+		</ul>
+		<p class="navbar-text">{{fullName}}</p>
+		<button class="btn btn-default navbar-btn" {{action "deauthorize"}}>Disconnect <i class="fa fa-trello"></i></button>
+	{{else}}
+		<button class="btn btn-default navbar-btn" {{action "authorize"}}>Connect <i class="fa fa-trello"></i></button>
+	{{/if}}
+</div>
