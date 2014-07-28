@@ -1,5 +1,10 @@
 /* global moment */
 
+if(window.SpeechSynthesisUtterance){
+	var startingUtterance = new window.SpeechSynthesisUtterance("Get to work.");
+	var finishedUtterance = new window.SpeechSynthesisUtterance("Done.  Take a break.");
+}
+
 import Ember from 'ember';
 
 function minutesToMilliseconds(minutes){
@@ -47,6 +52,9 @@ export default Ember.Controller.extend({
 
 		if(time >= duration){
 			// Do whatever happens when the timer's done.
+			if(window.speechSynthesis){
+				window.speechSynthesis.speak(finishedUtterance);
+			}
 			this.send("stop");
 		}
 		else{
@@ -62,6 +70,11 @@ export default Ember.Controller.extend({
 		start: function(){
 			this.set("isTiming", true);
 			this.set("startTime", Date.now());
+			
+			if(window.speechSynthesis){
+				window.speechSynthesis.speak(startingUtterance);
+			}
+
 			this.stepTime();
 		},
 
