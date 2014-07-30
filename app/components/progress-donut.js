@@ -79,11 +79,11 @@ export default Ember.Component.extend({
 		this.set("arc", arc);
 
 		var svg = d3.select(container)
-		.append("svg")
-			.attr("width", clientWidth)
-			.attr("height", clientHeight)
-		.append("g")
-			.attr("transform", "translate(" + clientWidth / 2 + "," + clientHeight / 2 + ")");
+			.append("svg")
+				.attr("width", "100%")
+				.attr("height", "100%")
+			.append("g")
+				.attr("transform", "translate(" + clientWidth / 2 + "," + clientHeight / 2 + ")");
 
 		var meter = svg.append("g");
 
@@ -105,6 +105,11 @@ export default Ember.Component.extend({
 			.attr("dy", ".35em");
 		this.set("textElement", textElement);
 		textElement.text(this.get("text"));
+
+		// Keep graph centered in container.
+		d3.select(window).on("resize", function(){
+			svg.attr("transform", "translate(" + container.clientWidth / 2 + "," + container.clientHeight / 2 + ")");
+		});
 
 	}.on("didInsertElement")
 });
