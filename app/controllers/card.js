@@ -8,20 +8,21 @@ export default Ember.ObjectController.extend({
 
 	actions: {
 		createComment: function(text){
-			var cardId = this.get("id");
 			var controller = this;
 
-			var data = {
-				text: text
-			};
+			var newComment = this.store.createRecord("comment", {
+				text: text,
+				card: this.get("model"),
+				creator: this.get("user.model")
+			});
 
-			Trello.post("cards/" + cardId + "/actions/comments", data,
-				function(response){
-					console.log("comment saved", response);
-					controller.get("comments").unshiftObject(response);
-				},
-				function(response){
-					console.log("error saving comment", response);
+			newComment.save()
+			.then(
+				function(comment){
+					return controller.get("comments")
+					.then(function(comments){
+						comments.unshiftObject(comment);
+					});
 				}
 			);
 		},
