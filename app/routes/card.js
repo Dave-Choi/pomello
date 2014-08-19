@@ -3,25 +3,23 @@ import AuthorizedRoute from './authorized';
 
 export default AuthorizedRoute.extend({
 	model: function(params){
-		var appKey = "69ea5c8500ae4ff25ecfdd6e4d92a561";
-		var token = this.controllerFor("user").get("token");
-		var cardId = params.card_id;
+		/*
+			The card result returned by the Trello server doesn't include
+			references to its commments, so these are fetched together,
+			and folded in.
 
-		var cardURL = 'https://trello.com/1/cards/' + cardId + '?key=' + appKey + '&token=' + token;
-		var commentURL = 'https://trello.com/1/cards/' + cardId + '/actions?filter=commentCard&key=' + appKey + '&token=' + token;
-
+			The Pomello application doesn't save cards, just creates and edits
+			card comments, so there aren't issues with rejected card saves from
+			the server that complain about included comment ids.
+		*/
 		return Ember.RSVP.hash({
-			card: Ember.$.getJSON(cardURL),
-			comments: Ember.$.getJSON(commentURL)
-		}).then(
-			function(results){
-				var card = results.card;
-				var comments = results.comments;
-				
-				card.comments = comments;
-
-				return card;
-			}
-		);
+			card: this.store.find("card", params.card_id),
+			comments: this.store.find("comment", { card: params.card_id })
+		}).then(function(hash){
+			return hash.card.get("comments").then(function(comments){
+				comments.addObjects(hash.comments);
+				return hash.card;
+			});
+		});
 	}
 });
