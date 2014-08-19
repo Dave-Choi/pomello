@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
+	itemController: "card",
 	filterString: "",
 	filterExpression: function(){
 		return new RegExp(this.get("filterString"));

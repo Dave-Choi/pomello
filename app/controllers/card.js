@@ -6,6 +6,10 @@ export default Ember.ObjectController.extend({
 	needs: ["user"],
 	userBinding: "controllers.user",
 
+	commentsBadge: function(){
+		return this.get("comments.length") || this.get("commentCount");
+	}.property("comments.length"),
+
 	actions: {
 		createComment: function(text){
 			var controller = this;
