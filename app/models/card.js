@@ -6,14 +6,6 @@ export default DS.Model.extend({
 	due: DS.attr("date"),
 
 	desc: DS.attr("string"),
-
-	// idBoard: DS.belongsTo("board"),
-	// idList: DS.belongsTo("list"),
-
-	// idMembers: DS.hasMany("member"),
-	// idShort: DS.attr("number"),
-	// labels: DS.hasMany("label"),
-
 	description: Ember.computed.alias("desc"),
 
 	name: DS.attr("string"),
