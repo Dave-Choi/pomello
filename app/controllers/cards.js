@@ -9,7 +9,8 @@ export default Ember.ArrayController.extend({
 
 	searchTargets: [
 		"name",
-		"desc"
+		"desc",
+		"board.name"
 	],
 
 	filtered: function(){

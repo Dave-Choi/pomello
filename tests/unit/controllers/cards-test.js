@@ -21,15 +21,24 @@ test('it filters cards based on filterString', function(){
 	controller.set("content", [
 		Ember.Object.create({
 			name: "Make a test suite.",
-			desc: "Add unit, integration and acceptance tests."
+			desc: "Add unit, integration and acceptance tests.",
+			board: {
+				name: "Programming"
+			}
 		}),
 		Ember.Object.create({
 			name: "Make a test sweet.",
-			desc: "<3"
+			desc: "<3",
+			board: {
+				name: "Programming"
+			}
 		}),
 		Ember.Object.create({
 			name: "Make a baked potato.",
-			desc: "Dock the skin, oil, salt, and throw in the oven.  (If you don't dock it, it can explode.  I've seen it.)"
+			desc: "Dock the skin, oil, salt, and throw in the oven.  (If you don't dock it, it can explode.  I've seen it.)",
+			board: {
+				name: "Cooking"
+			}
 		}),
 	]);
 
@@ -45,6 +54,10 @@ test('it filters cards based on filterString', function(){
 	controller.set("filterString", "and");
 	filtered = controller.get("filtered");
 	deepEqual(2, filtered.get("length"), "A basic string filter should check the card description for the target text.");
+
+	controller.set("filterString", "Cooking");
+	filtered = controller.get("filtered");
+	deepEqual(1, filtered.get("length"), "A basic string filter should check the card's board's name for the target text.");
 
 	controller.set("filterString", "[(<]");
 	filtered = controller.get("filtered");
