@@ -1,14 +1,22 @@
-/* global moment */
+/* global moment, Favico */
 
 if(window.SpeechSynthesisUtterance){
 	var startingUtterance = new window.SpeechSynthesisUtterance("Get to work.");
 	var finishedUtterance = new window.SpeechSynthesisUtterance("Done.  Take a break.");
 }
 
+var favicon = new Favico({
+    animation:'none'
+});
+
 import Ember from 'ember';
 
 function minutesToMilliseconds(minutes){
 	return minutes * 60 * 1000;
+}
+
+function millisecondsToMinutes(milliseconds){
+	return milliseconds / 1000 / 60;
 }
 
 export default Ember.Controller.extend({
@@ -42,6 +50,11 @@ export default Ember.Controller.extend({
 	completion: function(){
 		return this.get("time") / this.get("duration");
 	}.property("time", "duration"),
+
+	updateFavicon: function(){
+		var remaining = this.get("remaining");
+		favicon.badge(millisecondsToMinutes(remaining));
+	}.observes("remaining"),
 
 	stepTime: function(){
 		var controller = this;

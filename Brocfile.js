@@ -40,6 +40,8 @@ app.import({
 
 app.import("vendor/markdown-js/lib/markdown.js");
 
+app.import("vendor/favico.js/favico-0.3.5.min.js");
+
 app.import("vendor/font-awesome/css/font-awesome.min.css");
 var fontawesomeFonts = pickFiles('vendor/font-awesome/fonts', {
     srcDir: '/',
@@ -67,7 +69,7 @@ var emojiImages = pickFiles("vendor/emojify/images/emoji", {
 // module.exports = app.toTree();
 
 module.exports = mergeTrees([
-	app.toTree(), 
+	app.toTree(),
 	emojiImages,
 	fontawesomeFonts
 ]);
