@@ -47,18 +47,22 @@ test('it filters cards based on filterString', function(){
 	filtered = controller.get("filtered");
 	deepEqual(filtered.get("length"), controller.get("length"), "If no filter is applied, `filtered` should be the full set of content.");
 
-	controller.set("filterString", "test");
+	// Contained in "Make a test suite.", "Make a test sweet."
+	controller.set("filterString", "test"); 
 	filtered = controller.get("filtered");
 	deepEqual(2, filtered.get("length"), "A basic string filter should check the card name for the target text.");
 
-	controller.set("filterString", "and");
+	// Contained in "Add unit, integration and acceptance tests.", "Dock the skin, oil, salt, and throw in the oven.  (If you don't dock it, it can explode.  I've seen it.)"
+	controller.set("filterString", "and"); 
 	filtered = controller.get("filtered");
 	deepEqual(2, filtered.get("length"), "A basic string filter should check the card description for the target text.");
 
+	// Only contained in board name for card named "Make a baked potato."
 	controller.set("filterString", "Cooking");
 	filtered = controller.get("filtered");
 	deepEqual(1, filtered.get("length"), "A basic string filter should check the card's board's name for the target text.");
 
+	// Character set includes '(' in description for "Make a baked potato" and '<' in description for "Make a test sweet"
 	controller.set("filterString", "[(<]");
 	filtered = controller.get("filtered");
 	deepEqual(2, filtered.get("length"), "Filters should be regex aware.");
