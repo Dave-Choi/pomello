@@ -53,7 +53,7 @@ export default Ember.Controller.extend({
 
 	updateFavicon: function(){
 		var remaining = this.get("remaining");
-		favicon.badge(millisecondsToMinutes(remaining));
+		favicon.badge(Math.round(millisecondsToMinutes(remaining)));
 	}.observes("remaining"),
 
 	stepTime: function(){
