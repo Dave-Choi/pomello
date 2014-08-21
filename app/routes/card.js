@@ -21,5 +21,11 @@ export default AuthorizedRoute.extend({
 				return hash.card;
 			});
 		});
+	},
+
+	actions: {
+		resetCommentForm: function(){
+			this.controllerFor("timer").send("resetCommentForm");
+		}
 	}
 });

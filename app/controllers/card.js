@@ -26,6 +26,7 @@ export default Ember.ObjectController.extend({
 					return controller.get("comments")
 					.then(function(comments){
 						comments.unshiftObject(comment);
+						controller.send("resetCommentForm");
 					});
 				}
 			);

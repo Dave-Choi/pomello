@@ -95,6 +95,11 @@ export default Ember.Controller.extend({
 			clearTimeout(this.get("timeoutID"));
 			this.send("createComment", "**:tomato: " + this.get("taskDescription") + "**\n\n" + this.get("notes"));
 			this.set("isTiming", false);
+		},
+
+		resetCommentForm: function(){
+			this.set("taskDescription", "");
+			this.set("notes", "");
 		}
 	}
 });
