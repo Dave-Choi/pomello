@@ -11,6 +11,7 @@ export default DS.Model.extend({
 	name: DS.attr("string"),
 	shortURL: DS.attr("string"),
 
+	board: DS.belongsTo("board"),
 	commentCount: DS.attr("number"),
 	comments: DS.hasMany("comment", { async: true })
 });
