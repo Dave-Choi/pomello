@@ -14,8 +14,6 @@ export default Ember.ArrayController.extend({
 
 	filtered: function(){
 		return this.filter(function(card){
-			card = Ember.Object.create(card); // Make sure card has a get method
-
 			var filterExpression = this.get("filterExpression");
 			var targets = this.get("searchTargets");
 
