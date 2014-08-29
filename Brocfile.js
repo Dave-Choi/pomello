@@ -20,30 +20,30 @@ var app = new EmberApp();
 // along with the exports of each module as its value.
 
 app.import({
-	development: 'bower_components/bootstrap/dist/js/bootstrap.js',
-	production: 'bower_components/bootstrap/dist/js/bootstrap.min.js'
+	development: 'vendor/bootstrap/dist/js/bootstrap.js',
+	production: 'vendor/bootstrap/dist/js/bootstrap.min.js'
 });
 app.import({
-	development: 'bower_components/bootstrap/dist/css/bootstrap.css',
-	production: 'bower_components/bootstrap/dist/css/bootstrap.min.css'
-});
-
-app.import({
-  development: "bower_components/d3/d3.js",
-  production: "bower_components/d3/d3.min.js"
+	development: 'vendor/bootstrap/dist/css/bootstrap.css',
+	production: 'vendor/bootstrap/dist/css/bootstrap.min.css'
 });
 
 app.import({
-  development: "bower_components/moment/moment.js",
-  production: "bower_components/moment/min/moment.min.js"
+  development: "vendor/d3/d3.js",
+  production: "vendor/d3/d3.min.js"
 });
 
-app.import("bower_components/markdown-js/lib/markdown.js");
+app.import({
+  development: "vendor/moment/moment.js",
+  production: "vendor/moment/min/moment.min.js"
+});
 
-app.import("bower_components/favico.js/favico-0.3.5.min.js");
+app.import("vendor/markdown-js/lib/markdown.js");
 
-app.import("bower_components/font-awesome/css/font-awesome.min.css");
-var fontawesomeFonts = pickFiles('bower_components/font-awesome/fonts', {
+app.import("vendor/favico.js/favico-0.3.5.min.js");
+
+app.import("vendor/font-awesome/css/font-awesome.min.css");
+var fontawesomeFonts = pickFiles('vendor/font-awesome/fonts', {
     srcDir: '/',
     files: [
         'fontawesome-webfont.ttf',
@@ -56,11 +56,11 @@ var fontawesomeFonts = pickFiles('bower_components/font-awesome/fonts', {
 });
 
 app.import({
-  development: "bower_components/emojify/emojify.js",
-  production: "bower_components/emojify/emojify.min.js"
+  development: "vendor/emojify/emojify.js",
+  production: "vendor/emojify/emojify.min.js"
 });
 
-var emojiImages = pickFiles("bower_components/emojify/images/emoji", {
+var emojiImages = pickFiles("vendor/emojify/images/emoji", {
 	srcDir: "/",
 	files: ["**/*.png"],
 	destDir: "/assets/images/emoji"

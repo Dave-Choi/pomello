@@ -2,7 +2,6 @@
   "predef": {
     "document": true,
     "window": true,
-    "-Promise": true,
     "PomelloENV": true
   },
   "browser" : true,
