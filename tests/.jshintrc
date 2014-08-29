@@ -5,7 +5,6 @@
     "location",
     "setTimeout",
     "$",
-    "-Promise",
     "QUnit",
     "define",
     "console",

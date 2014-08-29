@@ -23,9 +23,7 @@
     <script src="assets/pomello.js"></script>
     <script src="https://api.trello.com/1/client.js?key=69ea5c8500ae4ff25ecfdd6e4d92a561"></script>
     <script>
-      window.PomelloENV = require('pomello/config/environment')['default'];
-      window.EmberENV = window.PomelloENV.EmberENV;
-      window.Test = require('pomello/app')['default'].create(PomelloENV.APP);
+      window.Pomello = require('pomello/app')['default'].create(PomelloENV.APP);
     </script>
   </body>
 </html>

@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" href="assets/vendor.css">
     <link rel="stylesheet" href="assets/pomello.css">
-    <link rel="stylesheet" href="assets/test-support.css">
+    <link rel="stylesheet" href="assets/qunit.css">
     <style>
       #ember-testing-container {
         position: absolute;
@@ -35,14 +35,16 @@
     <div id="qunit"></div>
     <div id="qunit-fixture"></div>
 
+    <script>
+      window.PomelloENV = {{ENV}};
+      window.EmberENV = window.PomelloENV.EmberENV;
+    </script>
+    <script src="assets/qunit.js"></script>
+    <script src="assets/qunit-notifications.js"></script>
     <script src="assets/vendor.js"></script>
-    <script src="assets/test-support.js"></script>
     <script src="assets/pomello.js"></script>
     <script src="testem.js"></script>
     <script>
-      window.PomelloENV = require('pomello/config/environment')['default'];
-      window.EmberENV = window.PomelloENV.EmberENV;
-
       require('pomello/tests/test-helper');
     </script>
     <script src="assets/test-loader.js"></script>
