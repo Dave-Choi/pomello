@@ -9,6 +9,10 @@ var favicon = new Favico({
     animation:'none'
 });
 
+function bound(value, min, max){
+	return Math.max(Math.min(value, max), min);
+}
+
 import Ember from 'ember';
 
 function minutesToMilliseconds(minutes){
@@ -48,7 +52,8 @@ export default Ember.Controller.extend({
 	}.property("remaining"),
 
 	completion: function(){
-		return this.get("time") / this.get("duration");
+		var percentage = this.get("time") / this.get("duration");
+		return bound(percentage, 0, 1);
 	}.property("time", "duration"),
 
 	updateFavicon: function(){
@@ -76,7 +81,6 @@ export default Ember.Controller.extend({
 			}, 1000);
 			this.set("timeoutID", timeoutID);
 		}
-		
 	},
 
 	actions: {
