@@ -19,25 +19,14 @@ var app = new EmberApp();
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
-app.import({
-	development: 'bower_components/bootstrap/dist/js/bootstrap.js',
-	production: 'bower_components/bootstrap/dist/js/bootstrap.min.js'
-});
-app.import({
-	development: 'bower_components/bootstrap/dist/css/bootstrap.css',
-	production: 'bower_components/bootstrap/dist/css/bootstrap.min.css'
-});
+app.import('bower_components/bootstrap/dist/js/bootstrap.min.js');
+app.import('bower_components/bootstrap/dist/css/bootstrap.min.css');
 
-app.import({
-  development: "bower_components/d3/d3.js",
-  production: "bower_components/d3/d3.min.js"
-});
+app.import("bower_components/d3/d3.min.js");
 
-app.import({
-  development: "bower_components/moment/moment.js",
-  production: "bower_components/moment/min/moment.min.js"
-});
+app.import("bower_components/moment/min/moment.min.js");
 
+// TODO: Make minified version of this.
 app.import("bower_components/markdown-js/lib/markdown.js");
 
 app.import("bower_components/favico.js/favico-0.3.5.min.js");
@@ -60,6 +49,12 @@ app.import({
   production: "bower_components/emojify/emojify.min.js"
 });
 
+/* 
+  The emojify package contains close to 900 images 
+  and will slow down the build dramatically.  
+  Feel free to delete them from your local bower_components
+  to speed it up.
+*/
 var emojiImages = pickFiles("bower_components/emojify/images/emoji", {
 	srcDir: "/",
 	files: ["**.png"],
