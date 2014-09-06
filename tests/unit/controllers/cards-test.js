@@ -13,6 +13,8 @@ test('it exists', function() {
 });
 
 test('it filters cards based on filterString', function(){
+	expect(5);
+	
 	var controller = this.subject();
 
 	// The normal itemController ("card") adds a bunch of dependencies we're not interested in for this test.
@@ -50,20 +52,28 @@ test('it filters cards based on filterString', function(){
 	// Contained in "Make a test suite.", "Make a test sweet."
 	controller.set("filterString", "test"); 
 	filtered = controller.get("filtered");
-	deepEqual(2, filtered.get("length"), "A basic string filter should check the card name for the target text.");
+	deepEqual(2, filtered.get("length"),
+		"A basic string filter should check the card name for the target text."
+	);
 
 	// Contained in "Add unit, integration and acceptance tests.", "Dock the skin, oil, salt, and throw in the oven.  (If you don't dock it, it can explode.  I've seen it.)"
 	controller.set("filterString", "and"); 
 	filtered = controller.get("filtered");
-	deepEqual(2, filtered.get("length"), "A basic string filter should check the card description for the target text.");
+	deepEqual(2, filtered.get("length"),
+		"A basic string filter should check the card description for the target text."
+	);
 
 	// Only contained in board name for card named "Make a baked potato."
 	controller.set("filterString", "Cooking");
 	filtered = controller.get("filtered");
-	deepEqual(1, filtered.get("length"), "A basic string filter should check the card's board's name for the target text.");
+	deepEqual(1, filtered.get("length"), 
+		"A basic string filter should check the card's board's name for the target text."
+	);
 
 	// Character set includes '(' in description for "Make a baked potato" and '<' in description for "Make a test sweet"
 	controller.set("filterString", "[(<]");
 	filtered = controller.get("filtered");
-	deepEqual(2, filtered.get("length"), "Filters should be regex aware.");
+	deepEqual(2, filtered.get("length"),
+		"Filters should be regex aware."
+	);
 });
